@@ -43,25 +43,33 @@ exports.sign_up_post = function (req, res) {
         return
     } 
 
-    
-    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-        const newUser = new User({
-            firstname: req.body.firstName,
-            lastname: req.body.lastName,
-            username: req.body.username,
-            password: hashedPassword,
-            membership: 'non-member'
-        });
-        
-        newUser.save((err) => {
-            if(err) {
-                console.log('error saving new user')
-                res.send('ERROR')
-            }
-            else {
-                res.redirect('/')
-            }
-        });
-    })
-    
+    User.findOne({username: req.body.username}, (err, user) => {
+        if (err) {
+            return
+        }
+        if(user) {
+            //user already exists
+            res.send('User exists')
+            return
+        }
+        bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+            const newUser = new User({
+                firstname: req.body.firstName,
+                lastname: req.body.lastName,
+                username: req.body.username,
+                password: hashedPassword,
+                membership: 'non-member'
+            });
+            
+            newUser.save((err) => {
+                if(err) {
+                    console.log('error saving new user')
+                    res.send('ERROR')
+                }
+                else {
+                    res.redirect('/')
+                }
+            });
+        })
+    });
 };

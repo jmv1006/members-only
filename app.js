@@ -11,6 +11,7 @@ require('dotenv').config()
 const indexRouter = require('./routes/index_route');
 const signUpRouter = require('./routes/sign_up');
 const signInRouter = require('./routes/sign_in');
+const joinClubRouter = require('./routes/join_club')
 
 var mongoose = require('mongoose');
 var mongoDB = process.env.DB_URL;
@@ -31,7 +32,6 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
-          console.log('passwords match')
           return done(null, user)
         } else {
           // passwords do not match!
@@ -60,11 +60,21 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
+app.use('/join', joinClubRouter)
+app.get("/log-out", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 app.listen(3000, () => console.log('app listening on port 3000!'));

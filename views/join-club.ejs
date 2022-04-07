@@ -3,14 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Members Only</title>
+        <title>Join Club</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
-        This is the home page!
         <% if (user) { %>
-            <div><%= user %></div>
+            <h1>Join Club</h1>
+            <form method="post">
+                <input type="text" name="code" placeholder="Passcode" required>
+                <input type="submit" hidden />
+            </form>
+        <% } else { %>
+            <div>Must be signed in</div>
         <% } %>
     </body>
 </html>
