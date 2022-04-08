@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index_route');
 const signUpRouter = require('./routes/sign_up');
 const signInRouter = require('./routes/sign_in');
 const joinClubRouter = require('./routes/join_club')
+const createMessageRouter = require('./routes/create_message')
 
 var mongoose = require('mongoose');
 var mongoDB = process.env.DB_URL;
@@ -71,7 +72,8 @@ app.set("view engine", "ejs");
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
-app.use('/join', joinClubRouter)
+app.use('/join', joinClubRouter);
+app.use('/create-message', createMessageRouter)
 app.get("/log-out", (req, res) => {
   req.logout();
   res.redirect("/");
