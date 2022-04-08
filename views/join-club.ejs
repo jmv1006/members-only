@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <% if (user) { %>
+        <% if (currentUser) { %>
             <h1>Join Club</h1>
             <form method="post">
                 <input type="text" name="code" placeholder="Passcode" required>
@@ -16,6 +16,7 @@
             </form>
         <% } else { %>
             <div>Must be signed in</div>
+            <a href="/sign-in">Sign In</a>
         <% } %>
     </body>
 </html>

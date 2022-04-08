@@ -5,13 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Create Message</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/create-message.css">
     </head>
     <body>
-        <h1>Create Message</h1>
-        <form method="post">
-            <input type="text" name="messageText" placeholder="Message Here">
-            <input type="submit" hidden />
-        </form>
+        <div class="mainBodyContainer">
+            <%- include("./partials/header") %>
+            <h1>Create Message</h1>
+            <form method="post">
+                <textarea class="messageTextArea" name="messageText" placeholder="Message Here"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </body>
 </html>

@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router()
+const index_page_controller = require('../controllers/index_controller')
 
-router.get('/', (req, res) => {
-    res.render('index', {user: res.locals.currentUser})
-});
+router.get('/', 
+    index_page_controller.index_page_get
+);
 
 module.exports = router;

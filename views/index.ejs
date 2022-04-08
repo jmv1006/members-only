@@ -11,6 +11,14 @@
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
             This is the home page!
+            <% if (messages) { %>
+                <% messages.forEach((message) => { %>
+                    <div>
+                        <%= message.text %>
+                        <%= message.date %>
+                    </div>
+                <% }) %>
+            <% } %>
         </div>
     </body>
 </html>

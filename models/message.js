@@ -5,7 +5,7 @@ const MessageSchema = new Schema(
     {
         text: { type: String },
         author: { type: Schema.Types.ObjectId, ref: 'User', required: true},
-        date: { type: Date }
+        date: { type: String }
     }
 );
 
