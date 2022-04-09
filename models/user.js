@@ -7,7 +7,8 @@ const UserSchema = new Schema(
         lastname: { type: String },
         username: { type: String },
         password: { type: String },
-        membership: { type: String }
+        membership: { type: String },
+        admin: { type: Boolean }
     }
 );
 

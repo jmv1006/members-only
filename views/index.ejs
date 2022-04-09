@@ -6,18 +6,28 @@
         <title>Members Only</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/index.css">
     </head>
     <body>
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
-            This is the home page!
             <% if (messages) { %>
                 <% messages.forEach((message) => { %>
-                    <div>
-                        <%= message.text %>
-                        <%= message.date %>
+                    <div class="messageBox">
+                        <div><%= message.text %></div>
+                        <div><%= message.date %></div>
+                        <% if (currentUser && currentUser.membership === 'member') { %>
+                            <div>By: <%= message.author.firstname %></div>
+                        <% } %>
+                        <% if (currentUser && currentUser.admin) { %>
+                            <form method="post">
+                                <button type="submit" name="messageId" value="<%= message.id %>">Delete</button>
+                            </form>
+                        <% } %>
                     </div>
                 <% }) %>
+            <% } else { %>
+                <div>No messages!</div>
             <% } %>
         </div>
     </body>

@@ -43,8 +43,11 @@ exports.sign_up_post = function (req, res) {
         return
     } 
 
+    
+
     User.findOne({username: req.body.username}, (err, user) => {
         if (err) {
+            res.send('ERROR')
             return
         }
         if(user) {
@@ -58,16 +61,16 @@ exports.sign_up_post = function (req, res) {
                 lastname: req.body.lastName,
                 username: req.body.username,
                 password: hashedPassword,
-                membership: 'non-member'
+                membership: 'non-member',
+                admin: false
             });
             
             newUser.save((err) => {
                 if(err) {
-                    console.log('error saving new user')
                     res.send('ERROR')
                 }
                 else {
-                    res.redirect('/')
+                    res.redirect('/sign-in')
                 }
             });
         })

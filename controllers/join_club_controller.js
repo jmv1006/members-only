@@ -8,8 +8,13 @@ exports.join_club_post = function(req, res) {
 
     if(req.body.code == process.env.MEMBER_CODE) {
         //sucess
-       User.findByIdAndUpdate()
-        
+       User.findByIdAndUpdate(res.locals.currentUser.id, {$set:{membership: 'member'}}, (err, result) => {
+            if(err) {
+                res.send('Error')
+                return
+            }
+            res.redirect('/')
+       });
     } else {
         res.send('Wrong')
     }

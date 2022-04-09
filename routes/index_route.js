@@ -6,4 +6,8 @@ router.get('/',
     index_page_controller.index_page_get
 );
 
+router.post('/',
+    index_page_controller.index_page_post
+);
+
 module.exports = router;

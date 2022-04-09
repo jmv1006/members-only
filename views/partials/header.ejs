@@ -1,12 +1,19 @@
 <div class="headerContainer">
-    Header
+    Members Only
     <% if(currentUser) { %>
         <div>Welcome, <%= currentUser.firstname %></div>
+        <% if(currentUser.membership === 'member') { %>
+            <div>You are a member!</div>
+        <% } else { %>
+            <a href="/join">Join Club</a>
+        <% } %>
+        <% if (currentUser.admin) { %>
+            <div>Admin Options</div>
+        <% } %>
         <a href="/create-message">Create Message</a>
         <a href="/log-out">Sign Out</a>
     <% } else { %>
         <a href="/sign-in">Sign In</a>
         <a href="/sign-up">Sign Up</a>
     <% } %>
-
 </div>
