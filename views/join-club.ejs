@@ -15,12 +15,13 @@
                 <form method="post">
                     <input type="password" name="code" placeholder="Passcode" required>
                     <input type="submit" hidden />
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="defaultButton">Submit</button>
                 </form>
             <% } else { %>
                 <div>Must be signed in</div>
                 <a href="/sign-in">Sign In</a>
             <% } %>
+            <%- include("./partials/footer") %>
         </div>
     </body>
 </html>

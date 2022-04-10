@@ -16,12 +16,9 @@ const createMessageRouter = require('./routes/create_message')
 
 var mongoose = require('mongoose');
 var mongoDB = `mongodb+srv://jmv1006:${process.env.DB_PW}@membersonlycluster.63dsj.mongodb.net/users?retryWrites=true&w=majority`;
-console.log(mongoDB)
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-const port = process.env.PORT || '3000';
 
 //functions here
 passport.use(
@@ -81,5 +78,7 @@ app.get("/log-out", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+const port = process.env.PORT || '3000';
 
 app.listen(port, () => console.log(`App running on port ${port}!`));

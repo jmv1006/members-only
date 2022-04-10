@@ -29,10 +29,12 @@
                         <div class="messageDate">Published: <%= message.date %></div>
                         <% if (currentUser && currentUser.membership === 'member') { %>
                             <div class="messageAuthor">By: <%= message.author.firstname %></div>
+                        <% } else { %>
+                            <div class="messageAuthor">Posted by: Anonymous</div>
                         <% } %>
                         <% if (currentUser && currentUser.admin) { %>
                             <form class="deleteMessage" method="post">
-                                <button type="submit" name="messageId" value="<%= message.id %>">Delete</button>
+                                <button type="submit" name="messageId" value="<%= message.id %>" class="defaultButton">Delete</button>
                             </form>
                         <% } %>
                     </div>
@@ -40,6 +42,7 @@
             <% } else { %>
                 <div>No messages!</div>
             <% } %>
+            <%- include("./partials/footer") %>
         </div>
     </body>
 </html>

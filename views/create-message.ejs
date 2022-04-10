@@ -11,11 +11,14 @@
     <body>
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
-            <h1>Create Message</h1>
-            <form method="post">
-                <textarea class="messageTextArea" name="messageText" placeholder="Message Here"></textarea>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="createMessageContainer">
+                <h1>Create Message</h1>
+                <form method="post" class="createMessageForm">
+                    <textarea class="messageTextArea" name="messageText" placeholder="Message Here"></textarea>
+                    <button type="submit" class="defaultButton">Submit</button>
+                </form>
+            </div>
+            <%- include("./partials/footer") %>
         </div>
     </body>
 </html>

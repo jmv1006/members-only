@@ -10,13 +10,19 @@ exports.sign_up_post = function (req, res) {
     const schema = Joi.object({
         firstName: Joi.string()
             .min(3)
+            .max(20)
+            .required()
             .messages({
-                'string.min': 'First Name must be at least 3 characters.'
+                'string.min': 'First name must be at least 3 characters.',
+                'string.max': 'First name cannot be more than 20 characters.'
             }),
         lastName: Joi.string()
             .min(3)
+            .max(20)
+            .required()
             .messages({
-                'string.min': 'Last Name must be at least 3 characters.'
+                'string.min': 'Last name must be at least 3 characters.',
+                'string.max': 'Last name cannot be more than 20 characters.'
             }),
         username: Joi.string()
             .min(3)
@@ -39,12 +45,13 @@ exports.sign_up_post = function (req, res) {
     const { error, value } = schema.validate(req.body, {abortEarly: false})
 
     if(error) {
+        console.log(error)
         res.render('sign-up', {errors: error.details, previousInput: req.body})
         return
     } 
-
     
 
+/*
     User.findOne({username: req.body.username}, (err, user) => {
         if (err) {
             res.send('ERROR')
@@ -75,4 +82,5 @@ exports.sign_up_post = function (req, res) {
             });
         })
     });
+    */
 };

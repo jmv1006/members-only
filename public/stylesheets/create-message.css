@@ -1,7 +1,24 @@
 .messageTextArea {
-    border: 2px solid orange;
+    border: 1px solid black;
     resize: none;
     width: 30rem;
     height: 15rem;
     font-family: sans-serif;
+}
+
+.createMessageContainer {
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createMessageForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }

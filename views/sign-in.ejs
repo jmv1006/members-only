@@ -6,16 +6,21 @@
         <title>Sign In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/sign-in.css">
     </head>
     <body>
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
-            <h1>Sign In</h1>
-            <form method="post">
-                <input type="email" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" hidden />
-            </form>
+            <div class="signInContainer">
+                <h1>Sign In</h1>
+                <form method="post" class="signInForm">
+                    <input type="email" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" hidden />
+                    <button type="submit" class="defaultButton">Sign In</button>
+                </form>
+            </div>
+            <%- include("./partials/footer") %>
         </div>
     </body>
 </html>
