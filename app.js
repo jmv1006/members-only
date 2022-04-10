@@ -6,7 +6,7 @@ const passport = require('passport');
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require('bcryptjs')
-if(process.env.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV === 'production') {
   require('dotenv').config()
 }
 
