@@ -5,24 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Sign Up</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/signup.css">
     </head>
     <body>
-        <h1>Sign Up</h1>
-        <form method="post">
-            <input type="text" name="firstName" placeholder="First Name">
-            <input type="text" name="lastName" placeholder="Last Name">
-            <input type="email" name="username" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="confirmedPassword" placeholder="Confirm Password">
-            <input type="submit" hidden />
-        </form>
-        <% if (errors) { %>
-            <ul>
-            <% errors.forEach((error) => { %>
-                <li><%= error.message %></li>
-            <% }) %>
-            </ul>
-        <% } %>
+        <div class="mainBodyContainer">
+            <%- include("./partials/header") %>
+            <div class="signUpPageContainer">
+                <h1>Sign Up</h1>
+                <form method="post" class="signUpForm">
+                    <input type="text" value='<%= previousInput.firstName %>' name="firstName" placeholder="First Name">
+                    <input type="text" value='<%= previousInput.lastName %>' name="lastName" placeholder="Last Name">
+                    <input type="email" value='<%= previousInput.username %>' name="username" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="confirmedPassword" placeholder="Confirm Password">
+                    <input type="submit" hidden />
+                    <button type="submit">Submit</button>
+                </form>
+                <% if (errors) { %>
+                    <ul>
+                    <% errors.forEach((error) => { %>
+                        <li><%= error.message %></li>
+                    <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+        </div>
     </body>
 </html>

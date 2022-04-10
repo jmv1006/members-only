@@ -19,7 +19,7 @@ exports.index_page_post = function(req, res) {
             return
         }
         res.redirect('/')
-    })
+    });
 };
 
 

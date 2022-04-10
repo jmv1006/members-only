@@ -11,16 +11,27 @@
     <body>
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
+            <% if(currentUser) { %>
+                <div>Welcome, <%= currentUser.firstname %></div>
+                <% if (currentUser.membership === 'member') { %>
+                    <div>You are a member of the club!</div>
+                <% } else { %>
+                    <a href="/join">Join the club!</a>
+                <% } %>
+                <% if (currentUser.admin) { %>
+                    <div>YOU ARE AN ADMIN</div>
+                <% } %>
+            <% } %>
             <% if (messages) { %>
                 <% messages.forEach((message) => { %>
                     <div class="messageBox">
-                        <div><%= message.text %></div>
-                        <div><%= message.date %></div>
+                        <div class="messageText"><%= message.text %></div>
+                        <div class="messageDate">Published: <%= message.date %></div>
                         <% if (currentUser && currentUser.membership === 'member') { %>
-                            <div>By: <%= message.author.firstname %></div>
+                            <div class="messageAuthor">By: <%= message.author.firstname %></div>
                         <% } %>
                         <% if (currentUser && currentUser.admin) { %>
-                            <form method="post">
+                            <form class="deleteMessage" method="post">
                                 <button type="submit" name="messageId" value="<%= message.id %>">Delete</button>
                             </form>
                         <% } %>

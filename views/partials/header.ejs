@@ -1,19 +1,10 @@
 <div class="headerContainer">
-    Members Only
+    <div class='headerTitle'>MEMBERS ONLY</div>
     <% if(currentUser) { %>
-        <div>Welcome, <%= currentUser.firstname %></div>
-        <% if(currentUser.membership === 'member') { %>
-            <div>You are a member!</div>
-        <% } else { %>
-            <a href="/join">Join Club</a>
-        <% } %>
-        <% if (currentUser.admin) { %>
-            <div>Admin Options</div>
-        <% } %>
-        <a href="/create-message">Create Message</a>
-        <a href="/log-out">Sign Out</a>
+        <a href="/create-message" class="redirectLink">Create Message</a>
+        <a href="/log-out" class="redirectLink">Sign Out</a>
     <% } else { %>
-        <a href="/sign-in">Sign In</a>
-        <a href="/sign-up">Sign Up</a>
+        <a href="/sign-in" class="redirectLink">Sign In</a>
+        <a href="/sign-up" class="redirectLink">Sign Up</a>
     <% } %>
 </div>

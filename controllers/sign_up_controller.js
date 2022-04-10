@@ -3,7 +3,7 @@ const Joi = require("joi");
 const bcrypt = require('bcryptjs');
 
 exports.sign_up_get = function (req, res) {
-    res.render('sign-up', {errors: null})
+    res.render('sign-up', {errors: null, previousInput: {}})
 }
 
 exports.sign_up_post = function (req, res) {
@@ -39,7 +39,7 @@ exports.sign_up_post = function (req, res) {
     const { error, value } = schema.validate(req.body, {abortEarly: false})
 
     if(error) {
-        res.render('sign-up', {errors: error.details})
+        res.render('sign-up', {errors: error.details, previousInput: req.body})
         return
     } 
 

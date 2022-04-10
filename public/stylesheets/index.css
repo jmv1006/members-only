@@ -1,9 +1,17 @@
 .messageBox {
-    border: 2px solid red;
+    border: 1px solid gray;
     width: 35rem;
-    height: 10rem;
+    height: 14rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    padding: 1rem;
+}
+
+.messageText {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    width: 30rem;
+    height: 7rem;
 }
