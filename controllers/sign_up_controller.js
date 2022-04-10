@@ -45,13 +45,12 @@ exports.sign_up_post = function (req, res) {
     const { error, value } = schema.validate(req.body, {abortEarly: false})
 
     if(error) {
-        console.log(error)
         res.render('sign-up', {errors: error.details, previousInput: req.body})
         return
     } 
     
 
-/*
+
     User.findOne({username: req.body.username}, (err, user) => {
         if (err) {
             res.send('ERROR')
@@ -82,5 +81,4 @@ exports.sign_up_post = function (req, res) {
             });
         })
     });
-    */
 };
