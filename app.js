@@ -15,11 +15,12 @@ const joinClubRouter = require('./routes/join_club')
 const createMessageRouter = require('./routes/create_message')
 
 var mongoose = require('mongoose');
-var mongoDB = process.env.DB_URL;
+var mongoDB = `mongodb+srv://jmv1006:${process.env.DB_PW}@membersonlycluster.63dsj.mongodb.net/users?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+const port = process.env.PORT || '3000';
 //functions here
 passport.use(
   new LocalStrategy((username, password, done) => {
@@ -79,4 +80,4 @@ app.get("/log-out", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3000, () => console.log('app listening on port 3000!'));
+app.listen(port, () => console.log(`App running on port ${port}!`));
