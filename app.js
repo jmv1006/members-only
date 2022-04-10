@@ -6,8 +6,7 @@ const passport = require('passport');
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require('bcryptjs')
-
-
+require('dotenv').config()
 
 const indexRouter = require('./routes/index_route');
 const signUpRouter = require('./routes/sign_up');
@@ -17,6 +16,7 @@ const createMessageRouter = require('./routes/create_message')
 
 var mongoose = require('mongoose');
 var mongoDB = `mongodb+srv://jmv1006:${process.env.DB_PW}@membersonlycluster.63dsj.mongodb.net/users?retryWrites=true&w=majority`;
+console.log(mongoDB)
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
