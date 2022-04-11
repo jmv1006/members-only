@@ -8,10 +8,10 @@
 
 .createMessageContainer {
     width: 100%;
-    height: 25rem;
+    height: 40rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 

@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 exports.join_club_get = function(req, res) {
-    res.render('join-club')
+    res.render('join-club', {error: null})
 }
 
 exports.join_club_post = function(req, res) {
@@ -16,6 +16,6 @@ exports.join_club_post = function(req, res) {
             res.redirect('/')
        });
     } else {
-        res.send('Wrong')
+        res.render('join-club', {error: 'Incorrect Code'})
     }
 }

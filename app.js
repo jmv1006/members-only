@@ -74,10 +74,14 @@ app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
 app.use('/join', joinClubRouter);
 app.use('/create-message', createMessageRouter)
-app.get("/log-out", (req, res) => {
+app.get("/sign-out", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+app.get('*', (req, res) => {
+  res.render('404')
+})
 
 const port = process.env.PORT || '3000';
 
