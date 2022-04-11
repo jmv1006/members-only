@@ -1,12 +1,12 @@
 .signUpForm {
     border: 1px solid black;
     width: 15rem;
-    height: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 1rem;
+    gap: 1rem;
 }
 
 .signUpPageContainer {

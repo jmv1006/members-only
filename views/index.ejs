@@ -12,15 +12,18 @@
         <div class="mainBodyContainer">
             <%- include("./partials/header") %>
             <% if(currentUser) { %>
-                <div>Welcome, <%= currentUser.firstname %></div>
+                <div class="userInfoContainer">
+                    <div>Welcome, <%= currentUser.firstname %>!</div>
                 <% if (currentUser.membership === 'member') { %>
-                    <div>You are a member of the club!</div>
+                    <div>Membership Status: <strong>Member</strong></div>
                 <% } else { %>
-                    <a href="/join">Join the club!</a>
+                    <div>Membership Status: <strong>Not a member</strong></div>
+                    <div>To become a member, you must join the club <a href="/join" class="redirectLink"><strong>here.</strong></a></div>
                 <% } %>
                 <% if (currentUser.admin) { %>
-                    <div>YOU ARE AN ADMIN</div>
+                    <div>ADMIN</div>
                 <% } %>
+                </div>
             <% } %>
             <% if (messages) { %>
                 <% messages.forEach((message) => { %>
@@ -28,7 +31,7 @@
                         <div class="messageText"><%= message.text %></div>
                         <div class="messageDate">Published: <%= message.date %></div>
                         <% if (currentUser && currentUser.membership === 'member') { %>
-                            <div class="messageAuthor">By: <%= message.author.firstname %></div>
+                            <div class="messageAuthor">Posted by: <%= message.author.firstname %></div>
                         <% } else { %>
                             <div class="messageAuthor">Posted by: Anonymous</div>
                         <% } %>

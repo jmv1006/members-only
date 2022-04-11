@@ -58,9 +58,10 @@ exports.sign_up_post = function (req, res) {
         }
         if(user) {
             //user already exists
-            res.send('User exists')
+            res.render('sign-up', {errors: [{message: 'Username Taken!'}], previousInput: req.body})
             return
         }
+        
         bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
             const newUser = new User({
                 firstname: req.body.firstName,

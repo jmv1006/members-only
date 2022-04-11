@@ -1,3 +1,17 @@
+.userInfoContainer {
+    border: 1px solid black;
+    width: 35rem;
+    min-height: 5rem;
+    height: auto;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
 .messageBox {
     border: 1px solid gray;
     width: 35rem;
@@ -25,5 +39,5 @@
     padding: 1rem;
     width: 30rem;
     height: auto;
-    min-height: 4rem;
+    min-height: 2rem;
 }
